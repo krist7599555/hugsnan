@@ -26,12 +26,12 @@ export async function isLogin() {
 export function profile() {
   return store.getters.user;
 }
-export function quiz() {
-  if (store.getters.quiz) {
-    return store.getters.quiz;
-  }
-  const quiz2 = axios.get('/api/quiz').then(res => res.data);
-  store.commit('setQuiz', quiz2);
+export async function quiz() {
+  // if (store.getters.quiz) {
+  //   return store.getters.quiz;
+  // }
+  const quiz2 = await axios.get('/api/quiz').then(res => res.data);
+  // store.commit('setQuiz', quiz2);
   return quiz2;
 }
 export async function logout() {
@@ -51,6 +51,7 @@ export async function login({ username, password }) {
       message: 'เข้าสู่ระบบ สำเร็จ',
       type: 'is-success'
     });
+    // @ts-ignore
     const route = router.app._route;
     const rdr = route.query.redirect;
     if (_.isString(rdr)) {
@@ -77,5 +78,5 @@ export async function users(id = null) {
   if (_.isString(id)) {
     return axios.get(`/api/users/${id}`).then(res => res.data);
   }
-  throw 'Error Request User is not null and not string';
+  return Promise.reject('Error Request User is not null and not string');
 }

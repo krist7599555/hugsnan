@@ -8,7 +8,7 @@ Layout
 import axios from "axios";
 import User from "@/components/User"
 import Layout from "@/components/Layout"
-import {quiz,users} from '../store/actions'
+import {quiz, users} from '../store/actions'
 
 export default {
   name: "profile",

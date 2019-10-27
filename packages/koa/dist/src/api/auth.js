@@ -63,6 +63,7 @@ module.exports = router
     ctx.ok(ctx.state.user);
   })
   .patch('/profile', async ctx => {
+    ctx.throw(410, 'ปิดระบบ');
     ctx.ok(
       (await ctx.users.findOneAndUpdate(
         { _id: ctx.state.user._id },

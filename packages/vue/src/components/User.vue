@@ -6,20 +6,26 @@
   template(v-show='name')
     br
     label ชื่อ
-    p: b {{props.user.nameTH}} {{props.user.surnameTH}} ({{$options.faculty[props.user.faculty].nameABBR}}# {{63 - props.user.year}})
+    p(style='margin-top: 1rem')
+      b.is-size-4 {{props.user.nickname}} ({{$options.faculty[props.user.faculty].nameABBR}}# {{63 - props.user.year}}) #[br]
+      p {{{"female": "นางสาว", "male": "นาย"}[props.user.gender]}} {{props.user.nameTH}} {{props.user.surnameTH}}
+        router-link(:to='`/users/${props.user._id}`' target='_blank')  | {{props.user._id}}
+  br
+
 
   .columns.is-mobile
     .column
       label เบอร์โทร
-      p {{props.user.phone}}
+      p: a(:href="$options.phoneLink(props.user.phone)" title="tel" target='_blank') {{props.user.phone}}
       label วันเกิด
       p {{props.user.birth}}
       label สาขา
       p {{props.user.major}}
     .column
       label facebook
-      p {{props.user.facebook}}
+      p: a(:href="`https://web.facebook.com/search/people/?q=${props.user.facebook}`" title="fb" target='_blank') {{props.user.facebook}}
       label line
+      p: a(:href="`http://line.me/ti/p/~${props.user.line}`" title="line" target='_blank') {{props.user.line}}
   hr
   template(v-for='{key, label} of props.quiz')
     br
@@ -47,7 +53,10 @@ export default {
   lastUpdate(u) {
     return u && u.lastUpdate && dayjs(u.lastUpdate).fromNow();
   },
-  faculty: require("../info/faculty.json")
+  faculty: require("../info/faculty.json"),
+  phoneLink(tel) {
+    return "tel:" + (tel || "").replace(/\D/g, '')
+  }
 }
 </script>
 

@@ -2,7 +2,7 @@ const router = new require('koa-router')();
 const sso = require('../lib/sso');
 const _ = require('lodash');
 const admin = {
-  // 6031301721: 'กฤษ',
+  6031301721: 'กฤษ',
   6142353226: 'น้ำปรุง',
   5930473321: 'จั๊มพ์',
   6141653324: 'เบีย',
@@ -63,6 +63,7 @@ module.exports = router
     ctx.ok(ctx.state.user);
   })
   .patch('/profile', async ctx => {
+    ctx.throw(410, 'ปิดระบบ');
     ctx.ok(
       (await ctx.users.findOneAndUpdate(
         { _id: ctx.state.user._id },

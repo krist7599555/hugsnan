@@ -16,7 +16,7 @@ Layout
 import axios from "axios";
 import User from "@/components/User"
 import Layout from "@/components/Layout"
-import {quiz, logout} from '../store/actions'
+import {quiz, logout, fetchUser} from '../store/actions'
 
 export default {
   name: "profile",
@@ -24,6 +24,7 @@ export default {
   data: () => ({ quiz: [] }),
   async created() {
     this.quiz = await quiz();
+    await fetchUser();
   },
   methods: {
     logout

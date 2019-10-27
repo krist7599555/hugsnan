@@ -31,12 +31,15 @@ axios.interceptors.response.use(
         break;
       }
     }
-    if (!err.config.headers.silent) {
-      Toast.open({
-        type: 'is-danger',
-        message: err.message
-      });
+
+    const silent = err.config.headers.silent;
+    if (silent) {
+      return Promise.reject(err);
     }
+    Toast.open({
+      type: 'is-danger',
+      message: err.message
+    });
     const redirect = router.app.$route.fullPath;
     switch (err.response.status) {
       case 401:

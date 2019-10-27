@@ -1,9 +1,11 @@
 import 'core-js';
+import '@babel/polyfill';
 
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import { fetchUser } from './store/actions';
 
 import './config';
 // import './registerServiceWorker';
@@ -21,12 +23,7 @@ new Vue({
   rellax: null,
   render: h => h(App),
   created() {
-    axios
-      .get('/api/profile', { headers: { silent: true } })
-      .then(res => {
-        store.commit('setUser', res.data);
-      })
-      .catch(_.noop);
+    fetchUser().catch(_.noop);
   },
   mounted() {
     this.rellax = new Rellax('.rellax', { center: true });

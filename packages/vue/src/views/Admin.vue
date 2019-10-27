@@ -37,46 +37,31 @@
       :data="users2"
       detailed detail-key="_id"
       @details-open="(row, idx) => fetchDetail(row, idx)"
+      :paginated="true"
+      :per-page="25"
     )
       template(slot-scope="u" v-show='isVisible(u.row)')
-        b-table-column(key='name' label='ชื่อ' searchable)
+        b-table-column(key='name' label='ชื่อ' sortable field='nameTH')
           | {{u.row.nameTH}} {{u.row.surnameTH}}
-        b-table-column(key='nickname' label='ชื่อเล่น' :searchable='true' custom-key='nickname')
+        b-table-column(key='nickname' label='ชื่อเล่น' custom-key='nickname' sortable field='nickname')
           | {{u.row.nickname}}
-        b-table-column(key='faculty' label='คณะ')
+        b-table-column(key='faculty' label='คณะ' sortable field='faculty')
           | {{faculty[u.row.faculty].nameABBR}}
-        b-table-column(key='year' label='ปี')
+        b-table-column(key='year' label='ปี' sortable field='year')
           | {{63 - u.row.year}}
         b-table-column(key='gender' label='เพศ')
           template(v-if='u.row.gender == "male"')
-            b-icon(icon='mars' style='color: #2c81ec')
+            b-icon(icon='mars' style='color: #2c81ec' key='male-icon')
           template(v-else-if='u.row.gender == "female"')
-            b-icon(icon='venus' style='color: #e875be')
+            b-icon(icon='venus' style='color: #e875be' key='female-icon')
           template(v-else) -
-        b-table-column(key='lastUpdate' label='แก้ไข')
+        b-table-column(key='lastUpdate' label='แก้ไข' sortable field='lastUpdate')
           template(v-if='u.row.lastUpdate')
             .tag
               .is-size-7 {{dayjs(u.row.lastUpdate).fromNow()}}
       template(slot="detail" slot-scope="u")
         .content(style='line-height: 1.7rem; max-width: 500px; margin: auto')
-
-          br
-          label(style='font-size: 0.5rem') เบอร์โทร
-          p {{u.row.phone}}
-
-          //- br
-          //- label(style='font-size: 0.5rem') วันเกิด
-          //- p {{u.row.birth}}
-
-          br
-          label(style='font-size: 0.5rem') สาขา
-          p {{u.row.major}}
-
-          template(v-for='{key, label} of quiz')
-            br
-            label(style='font-size: 0.5rem') {{label}}
-            p {{u.row[key]}}
-          br
+          User(:user='u.row' :quiz='quiz')
 
 </template>
 
@@ -87,8 +72,10 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import _ from 'lodash';
 import {users, quiz} from '../store/actions'
+import User from './../components/User.vue'
 
 export default {
+  components: {User},
   data() {
     return {
       users: [],
