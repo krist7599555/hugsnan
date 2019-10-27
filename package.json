@@ -1,0 +1,13 @@
+{
+  "name": "root",
+  "private": true,
+  "npmClient": "yarn",
+  "devDependencies": {
+    "lerna": "^3.16.4"
+  },
+  "scripts": {
+    "dev": "lerna run dev --stream",
+    "deploy": "lerna run deploy --stream",
+    "build": "bash ./scripts/build.sh"
+  }
+}

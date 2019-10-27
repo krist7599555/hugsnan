@@ -1,0 +1,5 @@
+node_modules
+packages/vu.olde/**
+packages/vue/src/assets/albumOriginal/**
+packages/vue/src/assets/albumOriginal2/**
+packages/vue/src/assets/album/**
