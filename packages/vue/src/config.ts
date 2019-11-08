@@ -64,3 +64,20 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 dayjs.extend(relativeTime);
 import 'dayjs/locale/th';
 dayjs.locale('th');
+
+import firebase from 'firebase/app';
+import 'firebase/database';
+import 'firebase/storage';
+const firebaseConfig = {
+  apiKey: 'AIzaSyAmOvNktT22Tphkgl7A1u4bzbj_nNv0NKo',
+  authDomain: 'hugsnan-221417.firebaseapp.com',
+  databaseURL: 'https://hugsnan-221417.firebaseio.com',
+  projectId: 'hugsnan-221417',
+  storageBucket: 'hugsnan-221417.appspot.com',
+  messagingSenderId: '497781033468',
+  appId: '1:497781033468:web:26410f6099c0d998a10a79'
+};
+
+firebase.initializeApp(firebaseConfig);
+export const database = firebase.database();
+export const storage = firebase.storage();

@@ -17,18 +17,18 @@
         src="../assets/alphabet-white.png"
       />
       <div class="btns is-flex" style="justify-content: center; margin-bottom: 5rem;">
-        <router-link
-          v-if='isAllAnswer'
+          <!-- v-if='isAllAnswer' -->
+        <!-- <router-link
           to="/profile"
           class="button is-danger is-outlined is-inverted is-rounded is-medium"
           style="margin-right: 10px"
-        >ตรวจสอบคำตอบ</router-link>
+        >เลือกวันสัมภาษณ์</router-link> -->
         <router-link
-          v-else
-          to="/register"
+
+          to="/confirm"
           class="button is-danger is-outlined is-inverted is-rounded is-medium"
           style="margin-right: 10px"
-        >สมัครไปค่าย</router-link>
+        >ยืนยันสิทธิไปค่าย</router-link>
         <router-link
           to="/schedule"
           class="button is-danger is-outlined is-inverted is-rounded is-medium"

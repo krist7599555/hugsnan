@@ -9,7 +9,10 @@ Layout
     b-field
       b-button(@click='logout' type='is-primary' icon-left='sign-out-alt' key='login_auth_logout') ออกจากระบบ
     hr
-    form(@submit.prevent)
+
+    FirebaseReserve
+
+    //- form(@submit.prevent)
       b-field(label='เพศ')
         b-field
           b-radio(v-model='info.gender' name='gender' native-value='male' required) ชาย
@@ -44,6 +47,7 @@ Layout
 <script>
 import Layout from "@/components/Layout.vue";
 import RegisterMessage from "@/components/RegisterMessage.vue";
+import FirebaseReserve from "@/components/FirebaseReserve.vue";
 
 // @ts-ignore
 const faculty = require('../info/faculty.json')
@@ -58,7 +62,8 @@ export default {
   name: "register",
   components: {
     Layout,
-    RegisterMessage
+    RegisterMessage,
+    FirebaseReserve
   },
   data() {
     return {

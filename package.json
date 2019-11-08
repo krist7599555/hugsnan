@@ -9,5 +9,8 @@
     "dev": "lerna run dev --stream",
     "deploy": "lerna run deploy --stream",
     "build": "bash ./scripts/build.sh"
+  },
+  "dependencies": {
+    "firebase": "^7.2.3"
   }
 }

@@ -15,7 +15,14 @@ const routes = [
     path: '/register',
     name: 'register',
     meta: { requiresAuth: true },
-    component: () => import(/* webpackChunkName: "register" */ '../views/Register.vue')
+    // component: () => import(/* webpackChunkName: "register" */ '../views/Register.vue')
+    redirect: '/confirm'
+  },
+  {
+    path: '/confirm',
+    name: 'confirm',
+    meta: { requiresAuth: true },
+    component: () => import(/* webpackChunkName: "confirm" */ '../views/Confirm.vue')
   },
   {
     path: '/schedule',
@@ -44,6 +51,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
+  },
+  {
+    path: '/success',
+    name: 'success',
+    component: () => import(/* webpackChunkName: "success" */ '../views/Success.vue')
   },
   {
     path: '/*',
