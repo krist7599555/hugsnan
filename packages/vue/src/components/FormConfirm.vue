@@ -34,13 +34,13 @@ const field = [
   {field: "slipDate", label: "วันที่โอน", placeholder: "8 Nov"},
   {field: "slipTime", label: "เวลาโอน", placeholder: "20:00:00"},
   {field: "slipName", label: "ชื่อบัญชีที่ใช้ในการโอน", placeholder: "กฤษฏิ์ พรไพรินทร์"},
-  {field: "slipName", label: "ธนาคาร", placeholder: "K-Bank"},
+  {field: "slipBank", label: "ธนาคาร", placeholder: "K-Bank"},
   {field: "slipNum", label: "รหัสอ้างอิง", placeholder: "xxxxxxxxxxxxxxx"},
   {field: null},
   {field: null},
-  {field: "bank", label: "ชื่อบัญชีในการโอนคืน", placeholder: "กฤษฏิ์ พรไพรินทร์"},
-  {field: "bank", label: "ธนาคารในการโอนคืน", placeholder: "K-BANK"},
-  {field: "bank", label: "เลขบัญชีในการโอนคืน", placeholder: "xxx-xxx-xx-xxxxxx-x"},
+  {field: "backName", label: "ชื่อบัญชีในการโอนคืน", placeholder: "กฤษฏิ์ พรไพรินทร์"},
+  {field: "bankBank", label: "ธนาคารในการโอนคืน", placeholder: "K-BANK"},
+  {field: "bankNum", label: "เลขบัญชีในการโอนคืน", placeholder: "xxx-xxx-xx-xxxxxx-x"},
 ]
 
 export default {
