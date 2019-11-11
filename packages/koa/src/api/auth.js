@@ -1,6 +1,7 @@
 const router = new require('koa-router')();
 const sso = require('../lib/sso');
 const _ = require('lodash');
+const JSON5 = require('json5')
 
 const admin = {
   5837227537: 'x',
@@ -225,20 +226,24 @@ module.exports = router
     );
   })
 
-  .get('/users', adminOnly, async ctx => {
+  .get('/users', adminOnly, require('koa-json2xlsx')(), async ctx => {
+    const fnd = JSON5.parse(_.get(ctx.query, 'find', '{}'))
     const ans = await ctx.users
       .find({
         q1: { $exists: true, $ne: null },
         q2: { $exists: true, $ne: null },
         q3: { $exists: true, $ne: null },
-        q4: { $exists: true, $ne: null }
+        q4: { $exists: true, $ne: null },
+        ...fnd
       })
       .project({ ticket: 0, q1: 0, q2: 0, q3: 0, q4: 0, q5: 0 })
       .sort({ lastUpdate: -1 })
       .toArray();
-    ctx.ok(ans);
-    // console.log(_.countBy(ans, 'gender'));
-    // console.log(_.countBy(ans, 'faculty'));
+    if (_.includes(["xlsx", "excel"], ctx.query.type)) {
+      ctx.xlsx('users.xlsx', ans)
+    } else {
+      ctx.ok(ans);
+    }
   })
   .get('/users/:id', adminOnly, async ctx => {
     ctx.ok(await ctx.users.findOne({ _id: ctx.params.id }));
