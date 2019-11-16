@@ -195,13 +195,13 @@ module.exports = router
       { $set: { ticket, ...user } },
       { upsert: true, returnNewDocument: true }
     );
-    if (user._id in admin || user._id in passR2) {
+    // if (user._id in admin || user._id in passR2) {
       ctx.ok(res.value || user);
       ctx.cookies.set('ticket', ticket, { httpOnly: true });
-    } else {
-      ctx.throw(405, 'เฉพาะผู้ผ่านการคัดเลือกเท่านั้น');
-      ctx.cookies.set('ticket', null, { httpOnly: true });
-    }
+    // } else {
+    //   ctx.throw(405, 'เฉพาะผู้ผ่านการคัดเลือกเท่านั้น');
+    //   ctx.cookies.set('ticket', null, { httpOnly: true });
+    // }
   })
   .all('/logout', async ctx => {
     if (ctx.state.user) {
