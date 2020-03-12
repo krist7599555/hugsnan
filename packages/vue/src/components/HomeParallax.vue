@@ -1,5 +1,5 @@
 <template>
-  <header class="is-flex">
+  <header class="is-flex" style='overflow: hidden'>
     <div class="rellax bg is-overlay" data-rellax-speed="-5">
       <div class='swipeup'>
         <b-icon icon='hand-point-up'></b-icon>

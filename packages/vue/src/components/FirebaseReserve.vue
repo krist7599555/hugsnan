@@ -40,7 +40,9 @@ import _ from 'lodash'
 import {watchUsers, patchUsers, limit} from '../store/firebase'
 
 function dateToStr(d) {
-  if (d == null) return "loading..."
+  if (d == null) {
+    return "loading...";
+  }
   const da = { 4: "จันทร์. 4", 5: "อังคาร. 5", 6: "พุธ. 6"}[_.floor(+d / 10)]
   const ta = { 0: "", 1: "16:30", 2: "17:30"}[+d % 10]
   return `${da} พ.ย. เวลา ${ta}`
@@ -65,7 +67,7 @@ export default {
       this.loading = true;
       if (old != null) {
         for (const ouid in users) {
-          if (old[ouid] != users[ouid]) {
+          if (old[ouid] !== users[ouid]) {
             this.$buefy.toast.open({
               type: "is-info",
               message: `${ouid} เลือกวัน ${dateToStr(users[ouid])}`

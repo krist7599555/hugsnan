@@ -184,5 +184,5 @@ export default [
   { grp: 8, speed: 6, src: require(`@/assets/album/214.jpg`) },
   { grp: 8, speed: 4, src: require(`@/assets/album/215.jpg`) },
   { grp: 8, speed: 4, src: require(`@/assets/album/216.jpg`) },
-  { grp: 8, speed: 6, src: require(`@/assets/album/217.jpg`) }
+  { grp: 8, speed: 6, src: require(`@/assets/album/217.jpg`) },
 ];

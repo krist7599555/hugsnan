@@ -19,6 +19,7 @@
     "buefy": "^0.8.5",
     "core-js": "^3.3.2",
     "dayjs": "^1.8.16",
+    "local-storage": "^2.0.0",
     "node-sass": "^4.12.0",
     "register-service-worker": "^1.6.2",
     "rellax": "^1.10.0",

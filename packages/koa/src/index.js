@@ -20,6 +20,7 @@ const server = app
   .use(require('koa-useragent').userAgent)
 
   .use(async (ctx, next) => {
+    console.log(">")
     try {
       ctx.users = await ctx.db.collection('users');
       const ticket = ctx.cookies.get('ticket');
